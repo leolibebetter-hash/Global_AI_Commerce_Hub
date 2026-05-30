@@ -98,5 +98,50 @@
     "select_images": "Select images to download",
     "select_for_use": "Please confirm image usage first",
     "coming_in_phase3": "This feature will be available in Phase 3"
+  },
+  "publish": {
+    "title": "Publish to Amazon",
+    "connect_amazon": "Connect Amazon Seller Account",
+    "connected": "Amazon Connected",
+    "disconnect": "Disconnect",
+    "seller_id_label": "Seller ID",
+    "connect_button": "Connect",
+    "listing_form": {
+      "listing_title": "Listing Title",
+      "bullets": "Bullet Points (one per line)",
+      "description": "Description",
+      "images": "Image URLs (comma-separated)",
+      "sku": "SKU",
+      "price": "Price (USD)",
+      "quantity": "Quantity",
+      "category": "Category Node"
+    },
+    "publish_button": "Publish to Amazon",
+    "publishing": "Publishing...",
+    "publish_success": "Published successfully!",
+    "publish_failed": "Publish failed",
+    "view_on_amazon": "View on Amazon",
+    "history": {
+      "history_title": "Publish History",
+      "date": "Date",
+      "filter_all": "All",
+      "filter_published": "Published",
+      "filter_failed": "Failed",
+      "filter_draft": "Draft"
+    },
+    "status": {
+      "label": "Status",
+      "draft": "Draft",
+      "published": "Published",
+      "failed": "Failed"
+    },
+    "empty_state": {
+      "no_records": "No publish records yet",
+      "connect_first": "Please connect your Amazon account first"
+    },
+    "confirm_dialog": {
+      "title": "Confirm Publish",
+      "message": "Are you sure you want to publish this listing to Amazon?"
+    }
   }
 }

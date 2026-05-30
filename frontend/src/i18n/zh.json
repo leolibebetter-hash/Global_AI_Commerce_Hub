@@ -98,5 +98,50 @@
     "select_images": "请选择要下载的图片",
     "select_for_use": "请先确认使用图片",
     "coming_in_phase3": "此功能将在 Phase 3 上线"
+  },
+  "publish": {
+    "title": "一键发布",
+    "connect_amazon": "连接亚马逊账号",
+    "connected": "已连接亚马逊",
+    "disconnect": "断开连接",
+    "seller_id_label": "Seller ID",
+    "connect_button": "连接",
+    "listing_form": {
+      "listing_title": "Listing 标题",
+      "bullets": "卖点（每行一个）",
+      "description": "商品描述",
+      "images": "图片 URL（多个用逗号分隔）",
+      "sku": "SKU",
+      "price": "价格 (USD)",
+      "quantity": "数量",
+      "category": "分类节点"
+    },
+    "publish_button": "发布到亚马逊",
+    "publishing": "发布中...",
+    "publish_success": "发布成功！",
+    "publish_failed": "发布失败",
+    "view_on_amazon": "在亚马逊上查看",
+    "history": {
+      "history_title": "发布历史",
+      "date": "日期",
+      "filter_all": "全部",
+      "filter_published": "已发布",
+      "filter_failed": "发布失败",
+      "filter_draft": "草稿"
+    },
+    "status": {
+      "label": "状态",
+      "draft": "草稿",
+      "published": "已发布",
+      "failed": "发布失败"
+    },
+    "empty_state": {
+      "no_records": "暂无发布记录",
+      "connect_first": "请先连接亚马逊账号"
+    },
+    "confirm_dialog": {
+      "title": "确认发布",
+      "message": "确认要将此商品发布到亚马逊吗？"
+    }
   }
 }
