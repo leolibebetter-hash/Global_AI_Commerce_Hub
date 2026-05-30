@@ -12,7 +12,11 @@ from app.core.database import engine
 async def lifespan(app: FastAPI):
     if settings.is_jwt_secret_default():
         import sys
-        print("WARNING: JWT_SECRET_KEY is using the default value. Set it in .env before deployment.", file=sys.stderr)
+        print(
+            "WARNING: JWT_SECRET_KEY is using the default value. "
+            "Set it in .env before deployment.",
+            file=sys.stderr,
+        )
     try:
         with engine.connect() as conn:
             conn.execute(text("SELECT 1"))
