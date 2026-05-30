@@ -3,6 +3,7 @@ import uuid
 from app.core.database import SessionLocal
 from app.models.user import User
 from app.models.user_ai_balance import UserAIBalance
+from app.services.auth import hash_password
 
 
 def seed():
@@ -12,7 +13,7 @@ def seed():
         user = User(
             id=user_id,
             phone="13800138000",
-            password_hash="not-a-real-hash",
+            password_hash=hash_password("test123456"),
             role="user",
         )
         db.add(user)
