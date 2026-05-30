@@ -40,6 +40,9 @@ class Settings(BaseSettings):
     # Copy Factory
     copy_provider: str = "deepseek"  # "deepseek" or future providers
 
+    # SP-API
+    sp_api_client: str = "mock"  # "mock" or "amazon"
+
     # Image Factory
     background_remover: str = "mock"  # "mock" or "removebg"
     scene_generator: str = "mock"  # "mock" or "replicate"
