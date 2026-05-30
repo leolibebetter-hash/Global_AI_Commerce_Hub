@@ -26,10 +26,16 @@ class Settings(BaseSettings):
     # Redis
     redis_url: str = "redis://localhost:6379/0"
 
+    # CORS
+    cors_origins: str = "http://localhost:5173"
+
     # JWT
     jwt_secret_key: str = "change-me"
     jwt_algorithm: str = "HS256"
     jwt_access_token_expire_minutes: int = 30
+
+    def is_jwt_secret_default(self) -> bool:
+        return self.jwt_secret_key in ("change-me", "")
 
 
 settings = Settings()
