@@ -11,6 +11,61 @@
     "publish": "一键发布",
     "settings": "设置"
   },
+  "copy_factory": {
+    "title": "文案工厂",
+    "product_name": "产品名称",
+    "category": "品类",
+    "features": "产品特性",
+    "features_hint": "输入特性后按 Enter 添加",
+    "target_market": "目标市场",
+    "language": "语言",
+    "generate_all": "全部生成",
+    "generating": "生成中...",
+    "tabs": {
+      "title_tab": "标题",
+      "bullets_tab": "卖点",
+      "description_tab": "描述",
+      "keywords_tab": "关键词"
+    },
+    "scores": {
+      "content_score": "内容评分",
+      "keyword_density": "关键词密度",
+      "char_count": "字符数",
+      "readability": "可读性"
+    },
+    "actions": {
+      "regenerate": "重新生成",
+      "optimize": "优化",
+      "optimize_title": "优化内容",
+      "confirm": "确认使用",
+      "copy_all": "复制全部关键词"
+    },
+    "status": {
+      "chars": "字符",
+      "words": "词",
+      "bullets_label": "卖点",
+      "keywords_found": "个关键词"
+    },
+    "editing": {
+      "description_view": "预览",
+      "description_source": "HTML 源码",
+      "target_keyword": "目标关键词",
+      "section": "部分",
+      "optimize_btn": "优化",
+      "apply": "应用",
+      "cancel": "取消",
+      "placeholder_title": "尚未生成标题",
+      "placeholder_bullets": "尚未生成卖点",
+      "placeholder_description": "尚未生成描述",
+      "placeholder_keywords": "尚未生成关键词",
+      "fill_form": "填写产品信息后点击「全部生成」开始",
+      "competition_low": "低",
+      "competition_medium": "中",
+      "competition_high": "高",
+      "density": "密度",
+      "confirm_success": "内容已确认！已扣除额度。"
+    }
+  },
   "image_factory": {
     "title": "图片工厂",
     "upload_zone": "拖拽图片到此处，或点击上传",

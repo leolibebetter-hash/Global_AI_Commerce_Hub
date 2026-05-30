@@ -11,6 +11,61 @@
     "publish": "Publish",
     "settings": "Settings"
   },
+  "copy_factory": {
+    "title": "Copy Factory",
+    "product_name": "Product Name",
+    "category": "Category",
+    "features": "Features",
+    "features_hint": "Type a feature and press Enter",
+    "target_market": "Target Market",
+    "language": "Language",
+    "generate_all": "Generate All",
+    "generating": "Generating...",
+    "tabs": {
+      "title_tab": "Title",
+      "bullets_tab": "Bullet Points",
+      "description_tab": "Description",
+      "keywords_tab": "Keywords"
+    },
+    "scores": {
+      "content_score": "Content Score",
+      "keyword_density": "Keyword Density",
+      "char_count": "Character Count",
+      "readability": "Readability"
+    },
+    "actions": {
+      "regenerate": "Regenerate",
+      "optimize": "Optimize",
+      "optimize_title": "Optimize Content",
+      "confirm": "Confirm & Use",
+      "copy_all": "Copy All Keywords"
+    },
+    "status": {
+      "chars": "chars",
+      "words": "words",
+      "bullets_label": "Bullet Points",
+      "keywords_found": "keywords found"
+    },
+    "editing": {
+      "description_view": "Preview",
+      "description_source": "HTML Source",
+      "target_keyword": "Target Keyword",
+      "section": "Section",
+      "optimize_btn": "Optimize",
+      "apply": "Apply",
+      "cancel": "Cancel",
+      "placeholder_title": "No title generated yet",
+      "placeholder_bullets": "No bullet points generated yet",
+      "placeholder_description": "No description generated yet",
+      "placeholder_keywords": "No keywords generated yet",
+      "fill_form": "Fill in the product information and click Generate All to start",
+      "competition_low": "Low",
+      "competition_medium": "Medium",
+      "competition_high": "High",
+      "density": "density",
+      "confirm_success": "Content confirmed! Credits deducted."
+    }
+  },
   "image_factory": {
     "title": "Image Factory",
     "upload_zone": "Drop an image here, or click to upload",
