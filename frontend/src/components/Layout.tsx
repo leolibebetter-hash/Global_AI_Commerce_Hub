@@ -25,12 +25,12 @@ export function Layout() {
 
       {/* Sidebar */}
       <aside
-        className={`fixed md:static inset-y-0 left-0 z-50 w-60 bg-surface border-r border-border
+        className={`fixed md:static inset-y-0 left-0 z-50 w-60 bg-white border-r border-edge
           transform transition-transform duration-200
           ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
           md:translate-x-0 flex flex-col`}
       >
-        <div className="p-6 border-b border-border">
+        <div className="p-6 border-b border-edge">
           <h1 className="text-lg font-bold text-primary">{t("app.title")}</h1>
         </div>
         <nav className="flex-1 p-4 space-y-1">
@@ -42,8 +42,8 @@ export function Layout() {
               className={({ isActive }) =>
                 `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors duration-200
                 ${isActive
-                  ? "bg-primary text-primary-foreground"
-                  : "text-foreground hover:bg-primary-light"
+                  ? "bg-primary text-primary-fg"
+                  : "text-content hover:bg-primary-light"
                 }`
               }
             >
@@ -60,7 +60,7 @@ export function Layout() {
       {/* Main */}
       <div className="flex-1 flex flex-col min-h-screen">
         {/* Top bar */}
-        <header className="h-16 bg-surface border-b border-border flex items-center justify-between px-6">
+        <header className="h-16 bg-white border-b border-edge flex items-center justify-between px-6">
           <button
             className="md:hidden p-2 rounded-lg hover:bg-primary-light"
             onClick={() => setSidebarOpen(true)}
@@ -72,7 +72,7 @@ export function Layout() {
           </button>
           <div className="flex items-center gap-4 ml-auto">
             <button
-              className="px-3 py-1.5 text-sm font-medium rounded-lg border border-border hover:bg-primary-light transition-colors"
+              className="px-3 py-1.5 text-sm font-medium rounded-lg border border-edge hover:bg-primary-light transition-colors"
               onClick={() => i18n.changeLanguage(i18n.language === "zh" ? "en" : "zh")}
             >
               {i18n.language === "zh" ? "EN" : "中文"}

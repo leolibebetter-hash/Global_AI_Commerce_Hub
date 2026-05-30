@@ -197,7 +197,7 @@ export function ImageFactory() {
         } else if (data.status === "failed") {
           throw new Error(data.error || t("image_factory.processing_error"));
         } else {
-          // Still processing â€” update stage message
+          // Still processing â€?update stage message
           const stageLabel =
             data.stage === "remove_bg"
               ? t("image_factory.stage_remove_bg")
@@ -414,7 +414,7 @@ export function ImageFactory() {
         className={`relative border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-colors duration-200 ${
           isDragging
             ? "border-primary bg-primary/5"
-            : "border-border hover:border-primary/50 hover:bg-primary/5"
+            : "border-edge hover:border-primary/50 hover:bg-primary/5"
         }`}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
@@ -471,7 +471,7 @@ export function ImageFactory() {
                 d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
               />
             </svg>
-            <p className="text-base font-medium text-foreground">
+            <p className="text-base font-medium text-content">
               {t("image_factory.upload_zone")}
             </p>
             <p className="text-sm text-gray-500">
@@ -495,7 +495,7 @@ export function ImageFactory() {
 
       {/* Style selector */}
       <div>
-        <p className="text-sm font-medium text-foreground mb-3">
+        <p className="text-sm font-medium text-content mb-3">
           {t("image_factory.style_minimal")} / {t("image_factory.style_lifestyle")} /{" "}
           {t("image_factory.style_premium")}
         </p>
@@ -508,7 +508,7 @@ export function ImageFactory() {
               className={`flex items-center gap-2.5 px-4 py-3 rounded-lg border-2 transition-all duration-200 text-sm font-medium ${
                 selectedStyle === opt.value
                   ? "border-primary bg-primary/10 text-primary"
-                  : "border-border text-foreground hover:border-gray-300"
+                  : "border-edge text-content hover:border-gray-300"
               }`}
             >
               <span
@@ -598,7 +598,7 @@ export function ImageFactory() {
                       <button
                         type="button"
                         onClick={() => handleStartRegenerate(i)}
-                        className="absolute top-2 right-2 px-2.5 py-1 text-xs font-medium bg-white/90 rounded-md shadow-sm text-foreground hover:bg-white transition-colors opacity-0 group-hover:opacity-100"
+                        className="absolute top-2 right-2 px-2.5 py-1 text-xs font-medium bg-white/90 rounded-md shadow-sm text-content hover:bg-white transition-colors opacity-0 group-hover:opacity-100"
                       >
                         {t("image_factory.regenerate")}
                       </button>
@@ -637,7 +637,7 @@ export function ImageFactory() {
 
                     {/* Inline regenerate style picker */}
                     {regeneratingIndex === i && (
-                      <div className="pt-2 border-t border-border mt-2 space-y-2">
+                      <div className="pt-2 border-t border-edge mt-2 space-y-2">
                         <p className="text-xs font-medium text-gray-500">
                           {t("image_factory.regenerate_style")}
                         </p>
@@ -650,7 +650,7 @@ export function ImageFactory() {
                               className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-md border text-xs transition-colors ${
                                 regenerateStyle === opt.value
                                   ? "border-primary bg-primary/10 text-primary"
-                                  : "border-border text-foreground hover:border-gray-300"
+                                  : "border-edge text-content hover:border-gray-300"
                               }`}
                             >
                               <span className={`w-2.5 h-2.5 rounded-full ${opt.swatch}`} />
@@ -729,7 +729,7 @@ export function ImageFactory() {
                 onClick={handleConfirm}
                 disabled={confirmed}
               >
-                {confirmed ? "âœ“ " : ""}
+                {confirmed ? "âœ?" : ""}
                 {t("image_factory.confirm")}
               </Button>
               <Button

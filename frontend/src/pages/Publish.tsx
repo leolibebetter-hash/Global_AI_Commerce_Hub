@@ -352,7 +352,7 @@ export function Publish() {
                 <span className="w-2 h-2 rounded-full bg-green-600" />
                 {t("publish.connected")}
               </span>
-              <span className="text-sm text-foreground">
+              <span className="text-sm text-content">
                 {connection.seller_id}
               </span>
             </div>
@@ -371,7 +371,7 @@ export function Publish() {
 
     return (
       <Card className="border-yellow-300 bg-yellow-50 mb-6">
-        <h3 className="text-base font-semibold text-foreground mb-3">
+        <h3 className="text-base font-semibold text-content mb-3">
           {t("publish.connect_amazon")}
         </h3>
         <div className="flex flex-col sm:flex-row gap-3">
@@ -407,10 +407,10 @@ export function Publish() {
           onClick={() => setShowConfirm(false)}
         />
         <Card className="relative z-10 w-full max-w-md mx-4 shadow-xl">
-          <h3 className="text-lg font-semibold text-foreground mb-2">
+          <h3 className="text-lg font-semibold text-content mb-2">
             {t("publish.confirm_dialog.title")}
           </h3>
-          <p className="text-sm text-foreground/70 mb-6">
+          <p className="text-sm text-content/70 mb-6">
             {t("publish.confirm_dialog.message")}
           </p>
           <div className="flex justify-end gap-3">
@@ -487,7 +487,7 @@ export function Publish() {
     if (!connection.connected) {
       return (
         <div className="text-center py-16">
-          <p className="text-foreground/60">{t("publish.empty_state.connect_first")}</p>
+          <p className="text-content/60">{t("publish.empty_state.connect_first")}</p>
         </div>
       );
     }
@@ -500,14 +500,14 @@ export function Publish() {
           <div className="space-y-4">
             {/* Title */}
             <div className="space-y-1">
-              <label className="block text-sm font-medium text-foreground">
+              <label className="block text-sm font-medium text-content">
                 {t("publish.listing_form.listing_title")}
               </label>
               <textarea
                 value={form.title}
                 onChange={(e) => setForm({ ...form, title: e.target.value })}
                 rows={3}
-                className="w-full rounded-lg border border-border bg-surface px-4 py-2 text-sm text-foreground
+                className="w-full rounded-lg border border-edge bg-white px-4 py-2 text-sm text-content
                   placeholder:text-gray-400 transition-colors duration-200
                   focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-y"
               />
@@ -515,7 +515,7 @@ export function Publish() {
 
             {/* Bullet Points */}
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-foreground">
+              <label className="block text-sm font-medium text-content">
                 {t("publish.listing_form.bullets")}
               </label>
               {form.bullets.map((bullet, i) => (
@@ -525,7 +525,7 @@ export function Publish() {
                   onChange={(e) => handleBulletChange(i, e.target.value)}
                   placeholder={`Bullet ${i + 1}`}
                   rows={2}
-                  className="w-full rounded-lg border border-border bg-surface px-4 py-2 text-sm text-foreground
+                  className="w-full rounded-lg border border-edge bg-white px-4 py-2 text-sm text-content
                     placeholder:text-gray-400 transition-colors duration-200
                     focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-y"
                 />
@@ -534,14 +534,14 @@ export function Publish() {
 
             {/* Description */}
             <div className="space-y-1">
-              <label className="block text-sm font-medium text-foreground">
+              <label className="block text-sm font-medium text-content">
                 {t("publish.listing_form.description")}
               </label>
               <textarea
                 value={form.description}
                 onChange={(e) => setForm({ ...form, description: e.target.value })}
                 rows={5}
-                className="w-full rounded-lg border border-border bg-surface px-4 py-2 text-sm text-foreground
+                className="w-full rounded-lg border border-edge bg-white px-4 py-2 text-sm text-content
                   placeholder:text-gray-400 transition-colors duration-200
                   focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-y"
               />
@@ -622,7 +622,7 @@ export function Publish() {
             onChange={(e) =>
               handleFilterChange(e.target.value as PublishStatus | "all")
             }
-            className="rounded-lg border border-border bg-surface px-4 py-2 text-sm text-foreground
+            className="rounded-lg border border-edge bg-white px-4 py-2 text-sm text-content
               focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
           >
             <option value="all">{t("publish.history.filter_all")}</option>
@@ -642,27 +642,27 @@ export function Publish() {
           </div>
         ) : records.length === 0 ? (
           <div className="text-center py-16">
-            <p className="text-foreground/60">{t("publish.empty_state.no_records")}</p>
+            <p className="text-content/60">{t("publish.empty_state.no_records")}</p>
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left py-3 px-2 font-medium text-foreground/70">
+                <tr className="border-b border-edge">
+                  <th className="text-left py-3 px-2 font-medium text-content/70">
                     {t("publish.listing_form.listing_title")}
                   </th>
-                  <th className="text-left py-3 px-2 font-medium text-foreground/70">
+                  <th className="text-left py-3 px-2 font-medium text-content/70">
                     {t("publish.listing_form.sku")}
                   </th>
-                  <th className="text-left py-3 px-2 font-medium text-foreground/70">ASIN</th>
-                  <th className="text-left py-3 px-2 font-medium text-foreground/70">
+                  <th className="text-left py-3 px-2 font-medium text-content/70">ASIN</th>
+                  <th className="text-left py-3 px-2 font-medium text-content/70">
                     {t("publish.status.label")}
                   </th>
-                  <th className="text-left py-3 px-2 font-medium text-foreground/70">
+                  <th className="text-left py-3 px-2 font-medium text-content/70">
                     {t("publish.listing_form.price")}
                   </th>
-                  <th className="text-left py-3 px-2 font-medium text-foreground/70">
+                  <th className="text-left py-3 px-2 font-medium text-content/70">
                     {t("publish.history.date")}
                   </th>
                 </tr>
@@ -671,7 +671,7 @@ export function Publish() {
                 {records.map((record) => (
                   <tr
                     key={record.id}
-                    className="border-b border-border hover:bg-primary-light/50 cursor-pointer"
+                    className="border-b border-edge hover:bg-primary-light/50 cursor-pointer"
                     onClick={() =>
                       setExpandedId(expandedId === record.id ? null : record.id)
                     }
@@ -718,7 +718,7 @@ export function Publish() {
                               </a>
                             )}
                             {!record.error_message && !record.seller_central_url && (
-                              <p className="text-foreground/50 text-xs">
+                              <p className="text-content/50 text-xs">
                                 ID: {record.id}
                               </p>
                             )}
@@ -736,17 +736,17 @@ export function Publish() {
         {totalPages > 1 && (
           <div className="flex items-center justify-center gap-2 mt-4">
             <button
-              className="px-3 py-1.5 text-sm rounded-lg border border-border hover:bg-primary-light transition-colors disabled:opacity-40"
+              className="px-3 py-1.5 text-sm rounded-lg border border-edge hover:bg-primary-light transition-colors disabled:opacity-40"
               disabled={currentPage <= 1}
               onClick={() => goToPage(currentPage - 1)}
             >
               Prev
             </button>
-            <span className="text-sm text-foreground/70 px-2">
+            <span className="text-sm text-content/70 px-2">
               {currentPage} / {totalPages}
             </span>
             <button
-              className="px-3 py-1.5 text-sm rounded-lg border border-border hover:bg-primary-light transition-colors disabled:opacity-40"
+              className="px-3 py-1.5 text-sm rounded-lg border border-edge hover:bg-primary-light transition-colors disabled:opacity-40"
               disabled={currentPage >= totalPages}
               onClick={() => goToPage(currentPage + 1)}
             >
@@ -762,7 +762,7 @@ export function Publish() {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold text-foreground mb-6">
+      <h2 className="text-2xl font-bold text-content mb-6">
         {t("publish.title")}
       </h2>
 
@@ -770,12 +770,12 @@ export function Publish() {
       {renderConnectionBanner()}
 
       {/* Tabs */}
-      <div className="flex gap-0 border-b border-border mb-6">
+      <div className="flex gap-0 border-b border-edge mb-6">
         <button
           className={`px-5 py-2.5 text-sm font-medium transition-colors border-b-2 ${
             activeTab === "new"
               ? "border-primary text-primary"
-              : "border-transparent text-foreground/60 hover:text-foreground"
+              : "border-transparent text-content/60 hover:text-content"
           }`}
           onClick={() => setActiveTab("new")}
         >
@@ -785,7 +785,7 @@ export function Publish() {
           className={`px-5 py-2.5 text-sm font-medium transition-colors border-b-2 ${
             activeTab === "history"
               ? "border-primary text-primary"
-              : "border-transparent text-foreground/60 hover:text-foreground"
+              : "border-transparent text-content/60 hover:text-content"
           }`}
           onClick={() => setActiveTab("history")}
         >

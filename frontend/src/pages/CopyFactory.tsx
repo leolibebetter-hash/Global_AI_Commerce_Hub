@@ -531,7 +531,7 @@ export function CopyFactory() {
 
               {/* Features tags */}
               <div className="space-y-1">
-                <label className="block text-sm font-medium text-foreground">
+                <label className="block text-sm font-medium text-content">
                   {t("copy_factory.features")}
                 </label>
                 <div className="flex flex-wrap gap-1.5 mb-2">
@@ -557,19 +557,19 @@ export function CopyFactory() {
                   onChange={(e) => setFeatureInput(e.target.value)}
                   onKeyDown={handleFeatureKeyDown}
                   placeholder={t("copy_factory.features_hint")}
-                  className="w-full rounded-lg border border-border bg-surface px-4 py-2 text-sm text-foreground placeholder:text-gray-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  className="w-full rounded-lg border border-edge bg-white px-4 py-2 text-sm text-content placeholder:text-gray-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                 />
               </div>
 
               {/* Target market */}
               <div className="space-y-1">
-                <label className="block text-sm font-medium text-foreground">
+                <label className="block text-sm font-medium text-content">
                   {t("copy_factory.target_market")}
                 </label>
                 <select
                   value={targetMarket}
                   onChange={(e) => setTargetMarket(e.target.value)}
-                  className="w-full rounded-lg border border-border bg-surface px-4 py-2 text-sm text-foreground transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  className="w-full rounded-lg border border-edge bg-white px-4 py-2 text-sm text-content transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                 >
                   {MARKETS.map((m) => (
                     <option key={m} value={m}>
@@ -581,13 +581,13 @@ export function CopyFactory() {
 
               {/* Language */}
               <div className="space-y-1">
-                <label className="block text-sm font-medium text-foreground">
+                <label className="block text-sm font-medium text-content">
                   {t("copy_factory.language")}
                 </label>
                 <select
                   value={language}
                   onChange={(e) => setLanguage(e.target.value)}
-                  className="w-full rounded-lg border border-border bg-surface px-4 py-2 text-sm text-foreground transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  className="w-full rounded-lg border border-edge bg-white px-4 py-2 text-sm text-content transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                 >
                   {LANGUAGES.map((l) => (
                     <option key={l} value={l}>
@@ -674,7 +674,7 @@ export function CopyFactory() {
                     />
                   </div>
                 </div>
-                <hr className="border-border" />
+                <hr className="border-edge" />
                 <div className="flex justify-between">
                   <span className="text-gray-500">
                     {t("copy_factory.scores.char_count")}
@@ -720,7 +720,7 @@ export function CopyFactory() {
           {hasResults && (
             <>
               {/* Tab bar */}
-              <div className="flex border-b border-border">
+              <div className="flex border-b border-edge">
                 {TAB_KEYS.map(({ key, labelKey }) => (
                   <button
                     key={key}
@@ -729,7 +729,7 @@ export function CopyFactory() {
                     className={`px-4 py-2.5 text-sm font-medium transition-colors duration-200 border-b-2 -mb-px ${
                       activeTab === key
                         ? "border-primary text-primary"
-                        : "border-transparent text-gray-500 hover:text-foreground hover:border-gray-300"
+                        : "border-transparent text-gray-500 hover:text-content hover:border-gray-300"
                     }`}
                   >
                     {t(labelKey)}
@@ -776,7 +776,7 @@ export function CopyFactory() {
                         <textarea
                           value={editableTitle}
                           onChange={(e) => setEditableTitle(e.target.value)}
-                          className="w-full rounded-lg border border-border bg-surface px-4 py-3 text-lg font-semibold text-foreground resize-y min-h-[60px] focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                          className="w-full rounded-lg border border-edge bg-white px-4 py-3 text-lg font-semibold text-content resize-y min-h-[60px] focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                           rows={2}
                         />
 
@@ -828,7 +828,7 @@ export function CopyFactory() {
                                   next[i] = e.target.value;
                                   setEditableBullets(next);
                                 }}
-                                className="w-full mt-1 rounded-lg border border-border bg-surface px-3 py-2 text-sm text-foreground resize-y min-h-[44px] focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                className="w-full mt-1 rounded-lg border border-edge bg-white px-3 py-2 text-sm text-content resize-y min-h-[44px] focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                                 rows={2}
                               />
                               {keywords && bulletKeywordDensities[i] && (
@@ -892,12 +892,12 @@ export function CopyFactory() {
                         </div>
 
                         {showHtmlSource ? (
-                          <pre className="w-full rounded-lg border border-border bg-gray-50 p-4 text-xs text-foreground overflow-auto max-h-96 whitespace-pre-wrap font-mono">
+                          <pre className="w-full rounded-lg border border-edge bg-gray-50 p-4 text-xs text-content overflow-auto max-h-96 whitespace-pre-wrap font-mono">
                             {description.description}
                           </pre>
                         ) : (
                           <div
-                            className="prose prose-sm max-w-none p-4 rounded-lg border border-border bg-surface"
+                            className="prose prose-sm max-w-none p-4 rounded-lg border border-edge bg-white"
                             dangerouslySetInnerHTML={{
                               __html: description.description,
                             }}
@@ -935,7 +935,7 @@ export function CopyFactory() {
                         <div className="overflow-x-auto">
                           <table className="w-full text-sm">
                             <thead>
-                              <tr className="border-b border-border text-left">
+                              <tr className="border-b border-edge text-left">
                                 <th className="pb-2 pr-4 font-medium text-gray-500">
                                   {t("copy_factory.tabs.keywords_tab")}
                                 </th>
@@ -954,11 +954,11 @@ export function CopyFactory() {
                               {keywords.keywords.map((kw, i) => (
                                 <tr
                                   key={i}
-                                  className={`border-b border-border ${
-                                    i % 2 === 0 ? "bg-surface" : "bg-gray-50/50"
+                                  className={`border-b border-edge ${
+                                    i % 2 === 0 ? "bg-white" : "bg-gray-50/50"
                                   }`}
                                 >
-                                  <td className="py-2.5 pr-4 font-medium text-foreground">
+                                  <td className="py-2.5 pr-4 font-medium text-content">
                                     {kw.keyword}
                                   </td>
                                   <td className="py-2.5 pr-4">
@@ -1030,7 +1030,7 @@ export function CopyFactory() {
       {/*  ACTION BAR (sticky bottom)                                    */}
       {/* ============================================================== */}
       {hasResults && (
-        <div className="sticky bottom-0 bg-surface border border-border rounded-lg shadow-lg p-4 z-30">
+        <div className="sticky bottom-0 bg-white border border-edge rounded-lg shadow-lg p-4 z-30">
           <div className="flex items-center justify-between gap-4 flex-wrap">
             {/* Left: language toggle */}
             <div className="flex items-center gap-3">
@@ -1041,7 +1041,7 @@ export function CopyFactory() {
                 type="button"
                 onClick={handleLanguageToggle}
                 disabled={generating}
-                className="px-3 py-1.5 text-sm font-medium rounded-lg border border-border hover:bg-primary-light transition-colors disabled:opacity-50"
+                className="px-3 py-1.5 text-sm font-medium rounded-lg border border-edge hover:bg-primary-light transition-colors disabled:opacity-50"
               >
                 {language === "en" ? "中文" : "English"}
               </button>
@@ -1063,7 +1063,7 @@ export function CopyFactory() {
                 onClick={handleConfirm}
                 disabled={confirmed || generating}
               >
-                {confirmed ? "✓ " : ""}
+                {confirmed ? "�?" : ""}
                 {t("copy_factory.actions.confirm")}
               </Button>
             </div>
@@ -1076,7 +1076,7 @@ export function CopyFactory() {
       {/* ============================================================== */}
       {showOptimizeModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-          <div className="bg-surface rounded-xl shadow-2xl border border-border w-full max-w-lg max-h-[80vh] overflow-y-auto">
+          <div className="bg-white rounded-xl shadow-2xl border border-edge w-full max-w-lg max-h-[80vh] overflow-y-auto">
             <div className="p-6 space-y-5">
               <div className="flex items-center justify-between">
                 <h3 className="text-lg font-semibold">
@@ -1085,7 +1085,7 @@ export function CopyFactory() {
                 <button
                   type="button"
                   onClick={() => setShowOptimizeModal(false)}
-                  className="text-gray-400 hover:text-foreground transition-colors"
+                  className="text-gray-400 hover:text-content transition-colors"
                   aria-label="Close"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1096,20 +1096,20 @@ export function CopyFactory() {
 
               {/* Target keyword */}
               <div className="space-y-1">
-                <label className="block text-sm font-medium text-foreground">
+                <label className="block text-sm font-medium text-content">
                   {t("copy_factory.editing.target_keyword")}
                 </label>
                 <input
                   value={optimizeTargetKeyword}
                   onChange={(e) => setOptimizeTargetKeyword(e.target.value)}
                   placeholder="e.g. wireless earbuds"
-                  className="w-full rounded-lg border border-border bg-surface px-4 py-2 text-sm text-foreground placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  className="w-full rounded-lg border border-edge bg-white px-4 py-2 text-sm text-content placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                 />
               </div>
 
               {/* Section select */}
               <div className="space-y-1">
-                <label className="block text-sm font-medium text-foreground">
+                <label className="block text-sm font-medium text-content">
                   {t("copy_factory.editing.section")}
                 </label>
                 <select
@@ -1117,7 +1117,7 @@ export function CopyFactory() {
                   onChange={(e) =>
                     setOptimizeSection(e.target.value as OptimizeSection)
                   }
-                  className="w-full rounded-lg border border-border bg-surface px-4 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  className="w-full rounded-lg border border-edge bg-white px-4 py-2 text-sm text-content focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                 >
                   <option value="title">
                     {t("copy_factory.tabs.title_tab")}
@@ -1145,11 +1145,11 @@ export function CopyFactory() {
               {/* Optimized result */}
               {optimizedContent !== null && (
                 <div className="space-y-3">
-                  <hr className="border-border" />
-                  <label className="block text-sm font-medium text-foreground">
+                  <hr className="border-edge" />
+                  <label className="block text-sm font-medium text-content">
                     {t("copy_factory.editing.optimize_btn")}
                   </label>
-                  <div className="rounded-lg border border-border bg-gray-50 p-4 text-sm text-foreground whitespace-pre-wrap max-h-48 overflow-y-auto">
+                  <div className="rounded-lg border border-edge bg-gray-50 p-4 text-sm text-content whitespace-pre-wrap max-h-48 overflow-y-auto">
                     {optimizedContent}
                   </div>
                   <div className="flex gap-2 justify-end">
