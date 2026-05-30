@@ -3,5 +3,12 @@
     "title": "Global AI Commerce Hub",
     "welcome": "AI-Powered Cross-Border Listing Content Factory",
     "switch_lang": "切换到中文"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "image_factory": "Image Factory",
+    "copy_factory": "Copy Factory",
+    "publish": "Publish",
+    "settings": "Settings"
   }
 }

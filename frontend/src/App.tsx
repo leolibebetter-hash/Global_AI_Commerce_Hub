@@ -1,25 +1,22 @@
-import { useTranslation } from "react-i18next";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Layout } from "./components/Layout";
+import { Dashboard } from "./pages/Dashboard";
+import { ImageFactory } from "./pages/ImageFactory";
+import { CopyFactory } from "./pages/CopyFactory";
+import { Publish } from "./pages/Publish";
 
 function App() {
-  const { t, i18n } = useTranslation();
-
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-3xl font-bold text-gray-900">
-          {t("app.title")}
-        </h1>
-        <p className="mt-4 text-gray-600">{t("app.welcome")}</p>
-        <button
-          className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-          onClick={() =>
-            i18n.changeLanguage(i18n.language === "zh" ? "en" : "zh")
-          }
-        >
-          {t("app.switch_lang")}
-        </button>
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="image-factory" element={<ImageFactory />} />
+          <Route path="copy-factory" element={<CopyFactory />} />
+          <Route path="publish" element={<Publish />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
