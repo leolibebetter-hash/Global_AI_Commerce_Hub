@@ -29,6 +29,9 @@ class Settings(BaseSettings):
     # CORS
     cors_origins: str = "http://localhost:5173"
 
+    # Storage
+    storage_backend: str = "local"  # "local" or "s3"
+
     # JWT
     jwt_secret_key: str = "change-me"
     jwt_algorithm: str = "HS256"

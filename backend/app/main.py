@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
 
 from app.api.auth import router as auth_router
+from app.api.files import router as files_router
 from app.core.config import settings
 from app.core.database import engine
 
@@ -41,6 +42,7 @@ app.add_middleware(
 )
 
 app.include_router(auth_router, prefix="/api/auth", tags=["auth"])
+app.include_router(files_router, prefix="/api/files", tags=["files"])
 
 
 @app.get("/api/health")
