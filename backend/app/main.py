@@ -5,7 +5,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
 
 from app.api.auth import router as auth_router
+from app.api.copy_factory import router as copy_factory_router
 from app.api.files import router as files_router
+from app.api.image_factory import router as image_factory_router
 from app.api.usage import router as usage_router
 from app.core.config import settings
 from app.core.database import engine
@@ -43,7 +45,9 @@ app.add_middleware(
 )
 
 app.include_router(auth_router, prefix="/api/auth", tags=["auth"])
+app.include_router(copy_factory_router, prefix="/api/copy-factory", tags=["copy-factory"])
 app.include_router(files_router, prefix="/api/files", tags=["files"])
+app.include_router(image_factory_router, prefix="/api/image-factory", tags=["image-factory"])
 app.include_router(usage_router, prefix="/api/usage", tags=["usage"])
 
 

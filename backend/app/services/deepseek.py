@@ -10,7 +10,11 @@ def create_client() -> OpenAI:
     )
 
 
-def chat(prompt: str, system: str = "You are a helpful assistant.") -> str:
+def chat(
+    prompt: str,
+    system: str = "You are a helpful assistant.",
+    max_tokens: int = 256,
+) -> str:
     client = create_client()
     response = client.chat.completions.create(
         model="deepseek-chat",
@@ -18,7 +22,7 @@ def chat(prompt: str, system: str = "You are a helpful assistant.") -> str:
             {"role": "system", "content": system},
             {"role": "user", "content": prompt},
         ],
-        max_tokens=256,
+        max_tokens=max_tokens,
         temperature=0.7,
     )
     return response.choices[0].message.content or ""

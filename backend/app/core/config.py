@@ -37,6 +37,14 @@ class Settings(BaseSettings):
     jwt_algorithm: str = "HS256"
     jwt_access_token_expire_minutes: int = 30
 
+    # Copy Factory
+    copy_provider: str = "deepseek"  # "deepseek" or future providers
+
+    # Image Factory
+    background_remover: str = "mock"  # "mock" or "removebg"
+    scene_generator: str = "mock"  # "mock" or "replicate"
+    image_processing_async: bool = False  # True = Celery, False = sync
+
     def is_jwt_secret_default(self) -> bool:
         return self.jwt_secret_key in ("change-me", "")
 
