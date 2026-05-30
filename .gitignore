@@ -6,6 +6,12 @@ dist/
 .venv/
 venv/
 *.egg
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage/
+htmlcov/
 
 # Node
 node_modules/
