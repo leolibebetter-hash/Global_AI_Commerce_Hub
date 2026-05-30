@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy import func
@@ -60,7 +60,7 @@ def summary(
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    month_start = datetime.utcnow().replace(
+    month_start = datetime.now(timezone.utc).replace(
         day=1, hour=0, minute=0, second=0, microsecond=0
     )
     rows = (
