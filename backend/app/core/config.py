@@ -14,14 +14,7 @@ class Settings(BaseSettings):
     mysql_db: str = "global_ai_commerce_hub"
     mysql_host: str = "localhost"
     mysql_port: int = 3306
-
-    @property
-    def database_url(self) -> str:
-        return (
-            f"mysql+pymysql://{self.mysql_user}:{self.mysql_password}"
-            f"@{self.mysql_host}:{self.mysql_port}/{self.mysql_db}"
-            f"?charset=utf8mb4"
-        )
+    database_url: str = "sqlite:///./global_ai_hub.db"
 
     # Redis
     redis_url: str = "redis://localhost:6379/0"
