@@ -40,3 +40,71 @@ The system is organized into three functional modules (see PRD §2 for full deta
 - **AI integration:** The Claude API is the central AI engine. Prompt design and caching strategies are critical for cost and latency control — every AI-generated output (copy, images, analysis) goes through Claude.
 - **i18n from day one:** The system targets global markets; all user-facing content must support multi-language, including AI-generated copy localized per target market.
 - **Data compliance:** Design data storage and processing with GDPR and international privacy regulations in mind. Platform data scraping must respect API ToS and rate limits.
+
+## Git Workflow (MANDATORY)
+
+**CRITICAL: EVERY change MUST go through a Pull Request. Never push directly to `master` or `develop`.**
+
+### Branch Strategy
+
+```
+master   ← 生产稳定版 (protected, no direct pushes)
+  ↑ PR
+develop  ← 开发主线 (default branch)
+  ↑ PR
+feature/xxx  ← 功能分支 (all work happens here)
+```
+
+### Workflow Steps
+
+1. **Create a feature branch from `develop`:**
+   ```bash
+   git checkout develop
+   git pull origin develop
+   git checkout -b feature/<short-description>
+   ```
+
+2. **Work on the feature, commit incrementally:**
+   - Use conventional commit prefixes: `feat:`, `fix:`, `chore:`, `docs:`, `refactor:`, `test:`
+   - Every commit must end with: `Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>`
+
+3. **Push the feature branch and create a PR:**
+   ```bash
+   git push -u origin feature/<short-description>
+   gh pr create --base develop --head feature/<short-description> --title "..." --body "..."
+   ```
+
+4. **Wait for user review and approval before merging.**
+
+5. **After merge to develop, create a PR from `develop` → `master` for release:**
+   ```bash
+   gh pr create --base master --head develop --title "Release: ..." --body "..."
+   ```
+
+6. **User approves and merges to master.**
+
+### Commit Message Format
+
+```
+<type>: <short description>
+
+<detailed body if needed>
+
+Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>
+```
+
+Types: `feat` (feature), `fix` (bug fix), `chore` (maintenance), `docs` (documentation), `refactor` (code restructuring), `test` (tests).
+
+### What NOT to Commit
+
+- `.env` / `.env.example` — sensitive config, never in repo
+- `README.md` — user preference, do not commit
+- `node_modules/`, `.venv/`, `__pycache__/` — build artifacts (covered by `.gitignore`)
+- `*.tsbuildinfo` — TypeScript build artifacts
+- `.claude/` — Claude internal directory
+
+### GitHub Repository
+
+- **URL:** https://github.com/leolibebetter-hash/Global_AI_Commerce_Hub
+- **Default branch:** `develop`
+- **Auth:** Use `gh auth login` if not authenticated
