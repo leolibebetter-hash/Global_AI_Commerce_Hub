@@ -8,12 +8,7 @@ class Settings(BaseSettings):
     deepseek_api_key: str = ""
     deepseek_base_url: str = "https://api.deepseek.com"
 
-    # Database
-    mysql_user: str = "root"
-    mysql_password: str = "change-me-in-production"
-    mysql_db: str = "global_ai_commerce_hub"
-    mysql_host: str = "localhost"
-    mysql_port: int = 3306
+    # Database (default: SQLite for local dev; set DATABASE_URL env for MySQL/Postgres in prod)
     database_url: str = "sqlite:///./global_ai_hub.db"
 
     # Redis
