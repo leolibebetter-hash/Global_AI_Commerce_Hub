@@ -17,6 +17,10 @@ htmlcov/
 # Node
 node_modules/
 frontend/dist/
+*.tsbuildinfo
+
+# Claude Code
+.claude/
 
 # Env
 .env
