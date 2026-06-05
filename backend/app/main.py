@@ -12,7 +12,7 @@ from app.api.image_factory import router as image_factory_router
 from app.api.publish import router as publish_router
 from app.api.usage import router as usage_router
 from app.core.config import settings
-from app.core.database import engine
+from app.core.database import engine, Base
 
 
 @asynccontextmanager
@@ -24,11 +24,13 @@ async def lifespan(app: FastAPI):
             "Set it in .env before deployment.",
             file=sys.stderr,
         )
+    # Auto-create tables for local development (SQLite)
     try:
         with engine.connect() as conn:
             conn.execute(text("SELECT 1"))
-    except Exception:
-        pass
+        Base.metadata.create_all(bind=engine)
+    except Exception as exc:
+        print(f"WARNING: Database health check failed: {exc}", file=sys.stderr)
     yield
 
 

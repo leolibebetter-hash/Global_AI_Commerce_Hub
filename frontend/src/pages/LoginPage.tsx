@@ -11,12 +11,45 @@ export function LoginPage() {
   const navigate = useNavigate();
 
   const [mode, setMode] = useState<Mode>("login");
-  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [name, setName] = useState("");
+  const [code, setCode] = useState("");
+  const [codeSent, setCodeSent] = useState(false);
+  const [sendingCode, setSendingCode] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+
+  const handleSendCode = useCallback(async () => {
+    if (!phone || phone.length < 11) {
+      setError("Please enter a valid phone number");
+      return;
+    }
+    setSendingCode(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/auth/send-code", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ phone }),
+      });
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}));
+        throw new Error(errData.detail || `Failed to send code (${res.status})`);
+      }
+      const data = await res.json();
+      setCodeSent(true);
+      // In dev mode the code is returned — pre-fill it for convenience
+      if (data.code) {
+        setCode(data.code);
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to send code");
+    } finally {
+      setSendingCode(false);
+    }
+  }, [phone]);
 
   const handleSubmit = useCallback(
     async (e: React.FormEvent) => {
@@ -27,37 +60,50 @@ export function LoginPage() {
         setError("Passwords do not match");
         return;
       }
-
-      if (password.length < 6) {
-        setError("Password must be at least 6 characters");
+      if (password.length < 8) {
+        setError("Password must be at least 8 characters");
+        return;
+      }
+      if (mode === "register" && !code) {
+        setError("Please enter the verification code");
         return;
       }
 
       setLoading(true);
 
       try {
-        const endpoint =
-          mode === "login" ? "/api/auth/login" : "/api/auth/register";
-        const body: Record<string, string> = { email, password };
-        if (mode === "register") body.name = name;
-
-        const res = await fetch(endpoint, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(body),
-        });
-
-        if (!res.ok) {
-          const errData = await res.json().catch(() => ({}));
-          throw new Error(errData.detail || `${mode === "login" ? "Login" : "Registration"} failed (${res.status})`);
+        if (mode === "login") {
+          const res = await fetch("/api/auth/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ phone, password }),
+          });
+          if (!res.ok) {
+            const errData = await res.json().catch(() => ({}));
+            throw new Error(errData.detail || `Login failed (${res.status})`);
+          }
+          const data = await res.json();
+          localStorage.setItem("access_token", data.access_token);
+          if (data.refresh_token) {
+            localStorage.setItem("refresh_token", data.refresh_token);
+          }
+        } else {
+          const res = await fetch("/api/auth/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ phone, password, code }),
+          });
+          if (!res.ok) {
+            const errData = await res.json().catch(() => ({}));
+            throw new Error(errData.detail || `Registration failed (${res.status})`);
+          }
+          const data = await res.json();
+          localStorage.setItem("access_token", data.access_token);
+          if (data.refresh_token) {
+            localStorage.setItem("refresh_token", data.refresh_token);
+          }
         }
-
-        const data = await res.json();
-        localStorage.setItem("access_token", data.access_token);
-        if (data.refresh_token) {
-          localStorage.setItem("refresh_token", data.refresh_token);
-        }
-        localStorage.setItem("user_email", email);
+        localStorage.setItem("user_phone", phone);
         navigate("/", { replace: true });
       } catch (err) {
         setError(err instanceof Error ? err.message : "Authentication failed");
@@ -65,7 +111,7 @@ export function LoginPage() {
         setLoading(false);
       }
     },
-    [mode, email, password, confirmPassword, name, navigate],
+    [mode, phone, password, confirmPassword, code, navigate],
   );
 
   return (
@@ -125,27 +171,57 @@ export function LoginPage() {
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  required
                   placeholder="John Doe"
                   className="w-full rounded-lg border border-edge bg-white px-4 py-2.5 text-sm text-content placeholder:text-gray-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                 />
               </div>
             )}
 
-            {/* Email */}
+            {/* Phone */}
             <div className="space-y-1">
               <label className="block text-sm font-medium text-content">
-                Email
+                Phone
               </label>
               <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
                 required
-                placeholder="you@example.com"
+                placeholder="13800138000"
                 className="w-full rounded-lg border border-edge bg-white px-4 py-2.5 text-sm text-content placeholder:text-gray-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
               />
             </div>
+
+            {/* SMS Code (register only) */}
+            {mode === "register" && (
+              <div className="space-y-1">
+                <label className="block text-sm font-medium text-content">
+                  Verification Code
+                </label>
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={code}
+                    onChange={(e) => setCode(e.target.value)}
+                    required
+                    maxLength={6}
+                    placeholder="6-digit code"
+                    className="flex-1 rounded-lg border border-edge bg-white px-4 py-2.5 text-sm text-content placeholder:text-gray-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  />
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="md"
+                    loading={sendingCode}
+                    disabled={sendingCode || phone.length < 11}
+                    onClick={handleSendCode}
+                    className="shrink-0"
+                  >
+                    {codeSent ? "Resend" : "Get Code"}
+                  </Button>
+                </div>
+              </div>
+            )}
 
             {/* Password */}
             <div className="space-y-1">
@@ -157,8 +233,8 @@ export function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                minLength={6}
-                placeholder="••••••"
+                minLength={8}
+                placeholder="••••••••"
                 className="w-full rounded-lg border border-edge bg-white px-4 py-2.5 text-sm text-content placeholder:text-gray-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
               />
             </div>
@@ -174,8 +250,8 @@ export function LoginPage() {
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   required
-                  minLength={6}
-                  placeholder="••••••"
+                  minLength={8}
+                  placeholder="••••••••"
                   className="w-full rounded-lg border border-edge bg-white px-4 py-2.5 text-sm text-content placeholder:text-gray-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                 />
               </div>
@@ -193,7 +269,12 @@ export function LoginPage() {
               variant="primary"
               size="lg"
               loading={loading}
-              disabled={loading || !email || !password}
+              disabled={
+                loading ||
+                !phone ||
+                !password ||
+                (mode === "register" && !code)
+              }
               type="submit"
               className="w-full"
             >
@@ -206,11 +287,11 @@ export function LoginPage() {
             <button
               type="button"
               onClick={() =>
-                i18n.changeLanguage(i18n.language === "zh" ? "en" : "zh")
+                i18n.changeLanguage(i18n.language?.startsWith("zh") ? "en" : "zh")
               }
               className="text-xs text-content/50 hover:text-content/70 transition-colors"
             >
-              {i18n.language === "zh" ? "Switch to English" : "切换到中文"}
+              {i18n.language?.startsWith("zh") ? "Switch to English" : "切换到中文"}
             </button>
           </div>
         </Card>

@@ -53,7 +53,7 @@ export function Layout() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
 
-  const userEmail = localStorage.getItem("user_email") || "User";
+  const userPhone = localStorage.getItem("user_phone") || "User";
 
   const handleLogout = () => {
     localStorage.removeItem("access_token");
@@ -120,17 +120,17 @@ export function Layout() {
             {/* User avatar & email */}
             <div className="hidden sm:flex items-center gap-2 text-sm text-content/70">
               <div className="w-8 h-8 rounded-full bg-primary text-primary-fg flex items-center justify-center text-xs font-bold">
-                {userEmail.charAt(0).toUpperCase()}
+                {userPhone.charAt(0)}
               </div>
-              <span className="max-w-[140px] truncate">{userEmail}</span>
+              <span className="max-w-[140px] truncate">{userPhone}</span>
             </div>
 
             {/* Language toggle */}
             <button
               className="px-3 py-1.5 text-sm font-medium rounded-lg border border-edge hover:bg-primary-light transition-colors"
-              onClick={() => i18n.changeLanguage(i18n.language === "zh" ? "en" : "zh")}
+              onClick={() => i18n.changeLanguage(i18n.language?.startsWith("zh") ? "en" : "zh")}
             >
-              {i18n.language === "zh" ? "EN" : "中文"}
+              {i18n.language?.startsWith("zh") ? "EN" : "中文"}
             </button>
 
             {/* Logout */}

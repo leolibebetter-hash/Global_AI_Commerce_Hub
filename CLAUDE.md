@@ -41,47 +41,60 @@ The system is organized into three functional modules (see PRD §2 for full deta
 - **i18n from day one:** The system targets global markets; all user-facing content must support multi-language, including AI-generated copy localized per target market.
 - **Data compliance:** Design data storage and processing with GDPR and international privacy regulations in mind. Platform data scraping must respect API ToS and rate limits.
 
-## Git Workflow (MANDATORY)
+## Git Workflow (MANDATORY — DO NOT SKIP ANY STEP)
 
-**CRITICAL: EVERY change MUST go through a Pull Request. Never push directly to `master` or `develop`.**
+**CRITICAL: EVERY change MUST go through the full PR → Review → Merge flow. Never push directly to `master` or `develop`. No exceptions.**
 
 ### Branch Strategy
 
 ```
 master   ← 生产稳定版 (protected, no direct pushes)
-  ↑ PR
+  ↑ PR (merge after review)
 develop  ← 开发主线 (default branch)
-  ↑ PR
+  ↑ PR (merge after review)
 feature/xxx  ← 功能分支 (all work happens here)
 ```
 
-### Workflow Steps
+### Step-by-Step: PR → Review → Merge
 
-1. **Create a feature branch from `develop`:**
-   ```bash
-   git checkout develop
-   git pull origin develop
-   git checkout -b feature/<short-description>
-   ```
+**Phase 1: Create Feature Branch**
 
-2. **Work on the feature, commit incrementally:**
-   - Use conventional commit prefixes: `feat:`, `fix:`, `chore:`, `docs:`, `refactor:`, `test:`
-   - Every commit must end with: `Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>`
+```bash
+git checkout develop
+git pull origin develop
+git checkout -b feature/<short-description>
+```
 
-3. **Push the feature branch and create a PR:**
-   ```bash
-   git push -u origin feature/<short-description>
-   gh pr create --base develop --head feature/<short-description> --title "..." --body "..."
-   ```
+**Phase 2: Implement & Commit**
 
-4. **Wait for user review and approval before merging.**
+- Use conventional commit prefixes: `feat:`, `fix:`, `chore:`, `docs:`, `refactor:`, `test:`
+- Every commit must end with: `Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>`
 
-5. **After merge to develop, create a PR from `develop` → `master` for release:**
-   ```bash
-   gh pr create --base master --head develop --title "Release: ..." --body "..."
-   ```
+**Phase 3: Push & Create PR**
 
-6. **User approves and merges to master.**
+```bash
+git push -u origin feature/<short-description>
+gh pr create --base develop --head feature/<short-description --title "..." --body "..."
+```
+
+**Phase 4: Code Review (MANDATORY — never skip)**
+
+- ALWAYS do a self-review (`git diff develop...feature/xxx`) before asking the user to review
+- ALWAYS fix review findings in the feature branch before merging
+- ALWAYS wait for user approval — never merge without explicit confirmation
+
+**Phase 5: Merge after Approval**
+
+```bash
+gh pr merge <PR-NUMBER> --merge --delete-branch
+git checkout develop && git pull origin develop
+```
+
+**Phase 6: Release PR (develop → master)**
+
+```bash
+gh pr create --base master --head develop --title "Release: ..." --body "..."
+```
 
 ### Commit Message Format
 
