@@ -24,7 +24,8 @@ class UsageHistoryResponse(BaseModel):
 
 
 class UsageSummaryResponse(BaseModel):
-    total_images: int
-    total_text_generations: int
-    total_api_cost: float
-    period: str  # "current_month"
+    total_images: int = 0
+    total_text: int = 0
+    total_published: int = 0
+    total_api_cost: float = 0.0
+    period: str = "current_month"

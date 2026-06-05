@@ -8,6 +8,7 @@ from app.api.deps import get_current_user
 from app.core.database import get_db
 from app.models.user import User
 from app.models.user_ai_usage import UserAIUsage
+from app.models.publish_record import PublishRecord
 from app.services.usage import get_balance, get_usage_history
 from app.schemas.usage import (
     BalanceResponse,
@@ -79,9 +80,18 @@ def summary(
     total_images = sum(r.count for r in rows if r.action_type == "image_gen")
     total_text = sum(r.count for r in rows if r.action_type == "text_gen")
     total_cost = sum(float(r.total_cost) for r in rows)
+    total_published = (
+        db.query(func.count(PublishRecord.id))
+        .filter(
+            PublishRecord.user_id == current_user.id,
+            PublishRecord.created_at >= month_start,
+        )
+        .scalar()
+    )
     return UsageSummaryResponse(
         total_images=total_images,
-        total_text_generations=total_text,
+        total_text=total_text,
+        total_published=total_published or 0,
         total_api_cost=round(total_cost, 6),
         period="current_month",
     )

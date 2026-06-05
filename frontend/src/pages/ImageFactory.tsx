@@ -197,7 +197,7 @@ export function ImageFactory() {
         } else if (data.status === "failed") {
           throw new Error(data.error || t("image_factory.processing_error"));
         } else {
-          // Still processing â€?update stage message
+          // Still processing ï¿½?update stage message
           const stageLabel =
             data.stage === "remove_bg"
               ? t("image_factory.stage_remove_bg")
@@ -729,7 +729,7 @@ export function ImageFactory() {
                 onClick={handleConfirm}
                 disabled={confirmed}
               >
-                {confirmed ? "âœ?" : ""}
+                {confirmed ? "âœ… " : ""}
                 {t("image_factory.confirm")}
               </Button>
               <Button

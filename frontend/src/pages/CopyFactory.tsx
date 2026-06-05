@@ -1063,7 +1063,7 @@ export function CopyFactory() {
                 onClick={handleConfirm}
                 disabled={confirmed || generating}
               >
-                {confirmed ? "âœ?" : ""}
+                {confirmed ? "âœ… " : ""}
                 {t("copy_factory.actions.confirm")}
               </Button>
             </div>

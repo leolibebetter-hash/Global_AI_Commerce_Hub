@@ -1,17 +1,59 @@
 import { useState } from "react";
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const navItems = [
-  { to: "/", label: "nav.dashboard", icon: "Home" },
-  { to: "/image-factory", label: "nav.image_factory", icon: "Image" },
-  { to: "/copy-factory", label: "nav.copy_factory", icon: "FileText" },
-  { to: "/publish", label: "nav.publish", icon: "Send" },
+  { to: "/", label: "nav.dashboard", icon: "dashboard" },
+  { to: "/image-factory", label: "nav.image_factory", icon: "image" },
+  { to: "/copy-factory", label: "nav.copy_factory", icon: "copy" },
+  { to: "/publish", label: "nav.publish", icon: "publish" },
 ];
+
+function NavIcon({ icon, className }: { icon: string; className?: string }) {
+  const cls = className || "w-5 h-5";
+  switch (icon) {
+    case "dashboard":
+      return (
+        <svg className={cls} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z" />
+        </svg>
+      );
+    case "image":
+      return (
+        <svg className={cls} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+      );
+    case "copy":
+      return (
+        <svg className={cls} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+      );
+    case "publish":
+      return (
+        <svg className={cls} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
 
 export function Layout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
+
+  const userEmail = localStorage.getItem("user_email") || "User";
+
+  const handleLogout = () => {
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("refresh_token");
+    localStorage.removeItem("user_email");
+    navigate("/login", { replace: true });
+  };
 
   return (
     <div className="min-h-screen flex">
@@ -47,10 +89,7 @@ export function Layout() {
                 }`
               }
             >
-              {item.icon === "Home" && <span>&#x1F3E0;</span>}
-              {item.icon === "Image" && <span>&#x1F5BC;</span>}
-              {item.icon === "FileText" && <span>&#x1F4C4;</span>}
-              {item.icon === "Send" && <span>&#x1F4E4;</span>}
+              <NavIcon icon={item.icon} />
               {t(item.label)}
             </NavLink>
           ))}
@@ -70,12 +109,31 @@ export function Layout() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
-          <div className="flex items-center gap-4 ml-auto">
+          <div className="flex items-center gap-3 ml-auto">
+            {/* User avatar & email */}
+            <div className="hidden sm:flex items-center gap-2 text-sm text-content/70">
+              <div className="w-8 h-8 rounded-full bg-primary text-primary-fg flex items-center justify-center text-xs font-bold">
+                {userEmail.charAt(0).toUpperCase()}
+              </div>
+              <span className="max-w-[140px] truncate">{userEmail}</span>
+            </div>
+
+            {/* Language toggle */}
             <button
               className="px-3 py-1.5 text-sm font-medium rounded-lg border border-edge hover:bg-primary-light transition-colors"
               onClick={() => i18n.changeLanguage(i18n.language === "zh" ? "en" : "zh")}
             >
               {i18n.language === "zh" ? "EN" : "中文"}
+            </button>
+
+            {/* Logout */}
+            <button
+              className="px-3 py-1.5 text-sm font-medium rounded-lg border border-red-200 text-red-600 hover:bg-red-50 transition-colors"
+              onClick={handleLogout}
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+              </svg>
             </button>
           </div>
         </header>
