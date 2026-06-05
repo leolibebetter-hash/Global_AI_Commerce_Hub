@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Button } from "../components/Button";
 import { Input } from "../components/Input";
@@ -100,6 +101,11 @@ function formatDateTime(iso: string): string {
 
 export function Publish() {
   const { t } = useTranslation();
+  const location = useLocation();
+
+  /* ---- Prefill from navigation state ---- */
+  const prefillImages =
+    (location.state as { prefillImages?: string } | null)?.prefillImages || "";
 
   /* ---- Connection state ------------------------------------------- */
 
@@ -115,7 +121,10 @@ export function Publish() {
 
   /* ---- Form state ------------------------------------------------- */
 
-  const [form, setForm] = useState<ListingForm>(EMPTY_FORM);
+  const [form, setForm] = useState<ListingForm>({
+    ...EMPTY_FORM,
+    images: prefillImages,
+  });
   const [formError, setFormError] = useState<string | null>(null);
 
   /* ---- Publish state ---------------------------------------------- */

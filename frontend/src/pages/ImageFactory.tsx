@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Button } from "../components/Button";
 import { Card } from "../components/Card";
@@ -26,6 +27,7 @@ const STYLE_OPTIONS = [
 
 export function ImageFactory() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   // Core state
   const [stage, setStage] = useState<Stage>("idle");
@@ -360,8 +362,10 @@ export function ImageFactory() {
 
   // --- Use in listing ---
   const handleUseInListing = useCallback(() => {
-    showToast(t("image_factory.coming_in_phase3"));
-  }, [showToast, t]);
+    if (!result) return;
+    const imageUrls = result.scene_urls.join(",");
+    navigate("/publish", { state: { prefillImages: imageUrls } });
+  }, [result, navigate]);
 
   // --- Error retry ---
   const handleRetry = useCallback(() => {
