@@ -172,6 +172,7 @@ class CampaignDetailResponse(BaseModel):
     status: str
     created_at: datetime
     updated_at: datetime
+    content_count: int = 0
     contents: list["ContentResponse"] = []
 
     class Config:
