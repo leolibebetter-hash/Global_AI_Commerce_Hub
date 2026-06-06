@@ -7,9 +7,21 @@ from app.services.deepseek import chat
 
 class DeepSeekKeywordSkill(KeywordSkill):
     async def recommend(self, ctx: ProductContext) -> KeywordResult:
+        market_hints = {
+            "US": "Focus on English keywords relevant to Amazon.com US search patterns, including long-tail variations.",
+            "UK": "Focus on British English spelling and UK-specific search terms commonly used on Amazon.co.uk.",
+            "DE": "Generate keywords in German. Include compound nouns, technical terms, and certifications German shoppers search for.",
+            "JP": "Generate keywords in Japanese. Include both Kanji and Katakana variations where applicable.",
+            "FR": "Generate keywords in French. Include gendered variations and French e-commerce search patterns.",
+            "CA": "Focus on English keywords (Amazon.ca). Include some French keywords if the category warrants bilingual listing.",
+            "AU": "Focus on Australian English terms. Include local slang and seasonal variations (Southern Hemisphere seasons).",
+        }
+        hint = market_hints.get(ctx.target_market, market_hints["US"])
+
         system = (
             "You are an Amazon keyword research specialist. "
-            "Return a JSON array of 25-30 keyword objects. "
+            f"{hint} "
+            "Return a JSON array of 25-30 keyword objects in the target market's language. "
             "Each object has: keyword (str), search_volume (\"high\"|\"medium\"|\"low\"), "
             "competition (\"high\"|\"medium\"|\"low\"), implanted (bool). "
             "Return ONLY valid JSON, no other text."
@@ -25,7 +37,7 @@ class DeepSeekKeywordSkill(KeywordSkill):
             f"Target Market: {ctx.target_market}\n"
             f"Language: {ctx.language}\n"
             f"Provided Keywords: {provided_keywords}\n\n"
-            f"Generate 25-30 relevant Amazon keywords as a JSON array. "
+            f"Generate 25-30 relevant Amazon keywords in {ctx.language} as a JSON array. "
             f"Mark keywords as implanted: true if they appear in the provided keywords list."
         )
 

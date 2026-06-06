@@ -52,8 +52,27 @@ interface OptimizeResponse {
 /*  Constants                                                          */
 /* ------------------------------------------------------------------ */
 
-const MARKETS = ["US", "UK", "DE", "JP"];
-const LANGUAGES = ["en", "zh"];
+const MARKETS = ["US", "UK", "DE", "JP", "FR", "CA", "AU"];
+const LANGUAGES = ["en", "zh", "de", "ja", "fr"];
+
+const MARKET_DEFAULT_LANG: Record<string, string> = {
+  US: "en", UK: "en", CA: "en", AU: "en",
+  DE: "de", JP: "ja", FR: "fr",
+};
+
+const MARKET_LABELS: Record<string, string> = {
+  US: "🇺🇸 United States",
+  UK: "🇬🇧 United Kingdom",
+  DE: "🇩🇪 Germany",
+  JP: "🇯🇵 Japan",
+  FR: "🇫🇷 France",
+  CA: "🇨🇦 Canada",
+  AU: "🇦🇺 Australia",
+};
+
+const LANG_LABELS: Record<string, string> = {
+  en: "English", zh: "中文", de: "Deutsch", ja: "日本語", fr: "Français",
+};
 
 const COMPETITION_STYLES: Record<string, string> = {
   low: "bg-green-100 text-green-800",
@@ -568,12 +587,16 @@ export function CopyFactory() {
                 </label>
                 <select
                   value={targetMarket}
-                  onChange={(e) => setTargetMarket(e.target.value)}
+                  onChange={(e) => {
+                    const m = e.target.value;
+                    setTargetMarket(m);
+                    setLanguage(MARKET_DEFAULT_LANG[m] || "en");
+                  }}
                   className="w-full rounded-lg border border-edge bg-white px-4 py-2 text-sm text-content transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                 >
                   {MARKETS.map((m) => (
                     <option key={m} value={m}>
-                      {m}
+                      {MARKET_LABELS[m] || m}
                     </option>
                   ))}
                 </select>
@@ -591,7 +614,7 @@ export function CopyFactory() {
                 >
                   {LANGUAGES.map((l) => (
                     <option key={l} value={l}>
-                      {l === "en" ? "English" : "中文"}
+                      {LANG_LABELS[l] || l}
                     </option>
                   ))}
                 </select>

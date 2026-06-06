@@ -7,8 +7,8 @@ class ProductContextRequest(BaseModel):
     product_name: str = Field(min_length=1, max_length=200)
     category: str = Field(min_length=1, max_length=100)
     features: list[str] = Field(default_factory=list, max_length=10)
-    target_market: str = Field(default="US", pattern=r"^(US|UK|DE|JP)$")
-    language: str = Field(default="en", pattern=r"^(en|zh|de|ja)$")
+    target_market: str = Field(default="US", pattern=r"^(US|UK|DE|JP|FR|CA|AU)$")
+    language: str = Field(default="en", pattern=r"^(en|zh|de|ja|fr)$")
     keywords: list[str] | None = None
     provider: str = Field(default="deepseek")
 

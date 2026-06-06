@@ -34,8 +34,11 @@ class Settings(BaseSettings):
     # Market Research
     market_research_provider: str = "deepseek"  # "deepseek" or future providers
 
-    # SP-API
+    # SP-API (legacy)
     sp_api_client: str = "mock"  # "mock" or "amazon"
+
+    # Platform Adapters
+    platform_adapter_provider: str = "mock"  # "mock" or real platform APIs
 
     # Image Factory
     background_remover: str = "mock"  # "mock" or "removebg"
