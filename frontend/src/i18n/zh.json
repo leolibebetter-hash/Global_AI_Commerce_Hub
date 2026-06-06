@@ -239,5 +239,61 @@
       "copy_caption": "复制文案",
       "refresh": "刷新列表"
     }
+  },
+  "market_research": {
+    "title": "市场研究",
+    "subtitle": "AI 驱动的选品分析与市场洞察",
+    "tabs": {
+      "trending": "爆款选品",
+      "keywords": "关键词研究",
+      "competitors": "竞品分析"
+    },
+    "trending": {
+      "title": "AI 爆款选品分析",
+      "category": "产品品类",
+      "market": "目标市场",
+      "platform": "平台",
+      "language": "语言",
+      "analyze": "AI 分析趋势",
+      "result": "分析结果",
+      "product": "产品",
+      "growth": "增长",
+      "price": "价格区间",
+      "placeholder": "输入品类后点击分析"
+    },
+    "keywords": {
+      "title": "AI 关键词研究",
+      "category": "产品品类",
+      "seeds": "种子关键词",
+      "seeds_hint": "输入关键词后按 Enter 添加",
+      "market": "目标市场",
+      "language": "语言",
+      "analyze": "AI 分析关键词",
+      "result": "研究结果",
+      "keyword": "关键词",
+      "volume": "搜索量",
+      "competition": "竞争度",
+      "relevance": "相关性",
+      "use_in_copy_factory": "用于文案工厂",
+      "placeholder": "输入品类后点击分析"
+    },
+    "competitors": {
+      "title": "AI 竞品分析",
+      "product_name": "产品名称",
+      "features": "产品特性",
+      "features_hint": "输入特性后按 Enter 添加",
+      "market": "目标市场",
+      "platform": "平台",
+      "language": "语言",
+      "analyze": "AI 分析竞品",
+      "result": "分析结果",
+      "opportunities": "差异化机会",
+      "pricing": "定价建议",
+      "placeholder": "输入产品信息后点击分析"
+    },
+    "history": "历史分析",
+    "actions": {
+      "refresh": "刷新"
+    }
   }
 }

@@ -239,5 +239,61 @@
       "copy_caption": "Copy Caption",
       "refresh": "Refresh List"
     }
+  },
+  "market_research": {
+    "title": "Market Research",
+    "subtitle": "AI-Powered Product Selection & Market Insights",
+    "tabs": {
+      "trending": "Trending Products",
+      "keywords": "Keyword Research",
+      "competitors": "Competitor Analysis"
+    },
+    "trending": {
+      "title": "AI Trending Product Analysis",
+      "category": "Product Category",
+      "market": "Target Market",
+      "platform": "Platform",
+      "language": "Language",
+      "analyze": "Analyze Trends",
+      "result": "Analysis Result",
+      "product": "Product",
+      "growth": "Growth",
+      "price": "Price Range",
+      "placeholder": "Enter a category and click analyze"
+    },
+    "keywords": {
+      "title": "AI Keyword Research",
+      "category": "Product Category",
+      "seeds": "Seed Keywords",
+      "seeds_hint": "Type a keyword and press Enter",
+      "market": "Target Market",
+      "language": "Language",
+      "analyze": "Analyze Keywords",
+      "result": "Research Result",
+      "keyword": "Keyword",
+      "volume": "Volume",
+      "competition": "Competition",
+      "relevance": "Relevance",
+      "use_in_copy_factory": "Use in Copy Factory",
+      "placeholder": "Enter a category and click analyze"
+    },
+    "competitors": {
+      "title": "AI Competitor Analysis",
+      "product_name": "Product Name",
+      "features": "Features",
+      "features_hint": "Type a feature and press Enter",
+      "market": "Target Market",
+      "platform": "Platform",
+      "language": "Language",
+      "analyze": "Analyze Competitors",
+      "result": "Analysis Result",
+      "opportunities": "Differentiation Opportunities",
+      "pricing": "Pricing Advice",
+      "placeholder": "Enter product info and click analyze"
+    },
+    "history": "Research History",
+    "actions": {
+      "refresh": "Refresh"
+    }
   }
 }
