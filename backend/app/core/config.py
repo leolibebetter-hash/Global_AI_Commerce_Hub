@@ -28,6 +28,9 @@ class Settings(BaseSettings):
     # Copy Factory
     copy_provider: str = "deepseek"  # "deepseek" or future providers
 
+    # Marketing
+    marketing_provider: str = "deepseek"  # "deepseek" or future providers
+
     # SP-API
     sp_api_client: str = "mock"  # "mock" or "amazon"
 
