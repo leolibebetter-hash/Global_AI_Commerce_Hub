@@ -31,6 +31,9 @@ class Settings(BaseSettings):
     # Marketing
     marketing_provider: str = "deepseek"  # "deepseek" or future providers
 
+    # Market Research
+    market_research_provider: str = "deepseek"  # "deepseek" or future providers
+
     # SP-API
     sp_api_client: str = "mock"  # "mock" or "amazon"
 
