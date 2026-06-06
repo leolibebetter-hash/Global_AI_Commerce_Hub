@@ -10,6 +10,7 @@
     "copy_factory": "Copy Factory",
     "publish": "Publish",
     "market_research": "Market Research",
+    "marketing": "Marketing Hub",
     "settings": "Settings"
   },
   "copy_factory": {
@@ -143,6 +144,100 @@
     "confirm_dialog": {
       "title": "Confirm Publish",
       "message": "Are you sure you want to publish this listing to Amazon?"
+    }
+  },
+  "marketing": {
+    "title": "Marketing Hub",
+    "subtitle": "AI-Powered Cross-Border Marketing & Content Creation",
+    "tabs": {
+      "campaign": "Campaign Planning",
+      "content": "Content Creation",
+      "audience": "Audience Analysis"
+    },
+    "campaign": {
+      "title": "AI Campaign Planner",
+      "product_name": "Product Name",
+      "category": "Category",
+      "features": "Features",
+      "features_hint": "Type a feature and press Enter",
+      "market": "Target Market",
+      "language": "Language",
+      "objective": "Objective",
+      "generate": "Generate Campaign",
+      "result": "Campaign Result",
+      "theme": "Campaign Theme",
+      "description": "Description",
+      "strategy": "Content Strategy",
+      "channels": "Channel Recommendations",
+      "hashtags": "Hashtags",
+      "budget": "Budget Tier",
+      "placeholder": "Fill in product info and click Generate",
+      "list_title": "My Campaigns",
+      "no_campaigns": "No campaigns yet",
+      "contents": "contents"
+    },
+    "content": {
+      "title": "AI Content Creator",
+      "types": {
+        "script": "Video Script",
+        "post": "Social Post",
+        "ad": "Ad Copy"
+      },
+      "product_name": "Product Name",
+      "features": "Features",
+      "features_hint": "Type a feature and press Enter",
+      "platform": "Platform",
+      "language": "Language",
+      "tone": "Tone",
+      "duration": "Duration (seconds)",
+      "audience": "Target Audience",
+      "key_message": "Key Message",
+      "market": "Target Market",
+      "objective": "Ad Objective",
+      "generate": "Generate Content",
+      "result": "Generated Result",
+      "script_title": "Video Title",
+      "hook": "Opening Hook",
+      "scenes": "Scenes",
+      "visual": "Visual",
+      "narration": "Narration",
+      "overlay": "Text Overlay",
+      "music": "Music Suggestion",
+      "caption": "Post Caption",
+      "hashtags": "Hashtags",
+      "image_hint": "Image Description",
+      "best_time": "Best Posting Time",
+      "engagement_tips": "Engagement Tips",
+      "headlines": "Headlines",
+      "descriptions": "Descriptions",
+      "keywords": "Keywords",
+      "placeholder": "Select content type and fill in product info",
+      "recent": "Recently Generated",
+      "no_content": "No content generated yet"
+    },
+    "audience": {
+      "title": "Audience Profile Analysis",
+      "category": "Product Category",
+      "market": "Target Market",
+      "interests": "Interest Keywords",
+      "interests_hint": "Type a keyword and press Enter",
+      "language": "Output Language",
+      "analyze": "Analyze Audience",
+      "result": "Analysis Result",
+      "demographics": "Demographics",
+      "interests": "Interests & Behaviors",
+      "content_prefs": "Content Preferences",
+      "platform_usage": "Platform Usage",
+      "primary": "Primary",
+      "secondary": "Secondary",
+      "pain_points": "Pain Points",
+      "motivations": "Purchase Motivations",
+      "placeholder": "Enter product category and target market to analyze"
+    },
+    "actions": {
+      "copy": "Copy Content",
+      "copy_caption": "Copy Caption",
+      "refresh": "Refresh List"
     }
   }
 }
