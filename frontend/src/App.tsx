@@ -6,6 +6,8 @@ import { CopyFactory } from "./pages/CopyFactory";
 import { Publish } from "./pages/Publish";
 import { MarketResearch } from "./pages/MarketResearch";
 import { MarketingHub } from "./pages/MarketingHub";
+import { ProductPlanner } from "./pages/ProductPlanner";
+import { Settings } from "./pages/Settings";
 import { LoginPage } from "./pages/LoginPage";
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -32,6 +34,8 @@ function App() {
           <Route path="publish" element={<Publish />} />
           <Route path="market-research" element={<MarketResearch />} />
           <Route path="marketing" element={<MarketingHub />} />
+          <Route path="product-planner" element={<ProductPlanner />} />
+          <Route path="settings" element={<Settings />} />
         </Route>
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
