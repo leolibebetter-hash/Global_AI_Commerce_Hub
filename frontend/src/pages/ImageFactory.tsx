@@ -20,9 +20,14 @@ interface ResultResponse {
 }
 
 const STYLE_OPTIONS = [
-  { value: "minimal", labelKey: "image_factory.style_minimal", swatch: "bg-gray-400" },
-  { value: "lifestyle", labelKey: "image_factory.style_lifestyle", swatch: "bg-amber-400" },
-  { value: "premium", labelKey: "image_factory.style_premium", swatch: "bg-yellow-700" },
+  { value: "minimal", labelKey: "image_factory.style_minimal", swatch: "bg-gray-400", desc: "Clean, simple background" },
+  { value: "lifestyle", labelKey: "image_factory.style_lifestyle", swatch: "bg-amber-400", desc: "Natural in-use settings" },
+  { value: "premium", labelKey: "image_factory.style_premium", swatch: "bg-yellow-700", desc: "Luxury product presentation" },
+  { value: "dark", labelKey: "image_factory.style_dark", swatch: "bg-gray-900", desc: "Dark moody atmosphere" },
+  { value: "nature", labelKey: "image_factory.style_nature", swatch: "bg-emerald-500", desc: "Outdoor natural scenery" },
+  { value: "urban", labelKey: "image_factory.style_urban", swatch: "bg-blue-700", desc: "City street vibes" },
+  { value: "vintage", labelKey: "image_factory.style_vintage", swatch: "bg-orange-800", desc: "Retro classic look" },
+  { value: "neon", labelKey: "image_factory.style_neon", swatch: "bg-pink-500", desc: "Bold neon lighting" },
 ] as const;
 
 export function ImageFactory() {

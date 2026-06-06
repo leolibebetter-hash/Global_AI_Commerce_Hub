@@ -11,6 +11,7 @@
     "publish": "一键发布",
     "market_research": "市场研究",
     "marketing": "营销中心",
+    "product_planner": "品类规划",
     "settings": "设置"
   },
   "copy_factory": {
@@ -77,6 +78,11 @@
     "style_minimal": "简约",
     "style_lifestyle": "生活化",
     "style_premium": "高端",
+    "style_dark": "暗黑",
+    "style_nature": "自然",
+    "style_urban": "都市",
+    "style_vintage": "复古",
+    "style_neon": "霓虹",
     "generate": "生成场景图",
     "generating": "生成中...",
     "stage_remove_bg": "正在去除背景",

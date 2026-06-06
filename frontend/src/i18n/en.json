@@ -11,6 +11,7 @@
     "publish": "Publish",
     "market_research": "Market Research",
     "marketing": "Marketing Hub",
+    "product_planner": "Product Planner",
     "settings": "Settings"
   },
   "copy_factory": {
@@ -77,6 +78,11 @@
     "style_minimal": "Minimal",
     "style_lifestyle": "Lifestyle",
     "style_premium": "Premium",
+    "style_dark": "Dark",
+    "style_nature": "Nature",
+    "style_urban": "Urban",
+    "style_vintage": "Vintage",
+    "style_neon": "Neon",
     "generate": "Generate Scene Images",
     "generating": "Generating...",
     "stage_remove_bg": "Removing background",
