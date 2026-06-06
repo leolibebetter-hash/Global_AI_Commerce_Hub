@@ -10,6 +10,7 @@ i18n.use(initReactI18next).init({
   },
   lng: "zh",
   fallbackLng: "zh",
+  load: "languageOnly",
   interpolation: {
     escapeValue: false,
   },

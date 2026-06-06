@@ -19,6 +19,7 @@ export function clearAuth(): void {
   localStorage.removeItem(TOKEN_KEY);
   localStorage.removeItem(REFRESH_KEY);
   localStorage.removeItem(EMAIL_KEY);
+  localStorage.removeItem("user_phone");
 }
 
 export function getUserEmail(): string | null {

@@ -2,26 +2,14 @@ from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
-    model_config = {"env_file": ".env", "env_file_encoding": "utf-8"}
+    model_config = {"env_file": ".env", "env_file_encoding": "utf-8", "extra": "ignore"}
 
     # DeepSeek
     deepseek_api_key: str = ""
     deepseek_base_url: str = "https://api.deepseek.com"
 
-    # Database
-    mysql_user: str = "root"
-    mysql_password: str = "change-me-in-production"
-    mysql_db: str = "global_ai_commerce_hub"
-    mysql_host: str = "localhost"
-    mysql_port: int = 3306
-
-    @property
-    def database_url(self) -> str:
-        return (
-            f"mysql+pymysql://{self.mysql_user}:{self.mysql_password}"
-            f"@{self.mysql_host}:{self.mysql_port}/{self.mysql_db}"
-            f"?charset=utf8mb4"
-        )
+    # Database (default: SQLite for local dev; set DATABASE_URL env for MySQL/Postgres in prod)
+    database_url: str = "sqlite:///./global_ai_hub.db"
 
     # Redis
     redis_url: str = "redis://localhost:6379/0"
@@ -39,6 +27,9 @@ class Settings(BaseSettings):
 
     # Copy Factory
     copy_provider: str = "deepseek"  # "deepseek" or future providers
+
+    # Marketing
+    marketing_provider: str = "deepseek"  # "deepseek" or future providers
 
     # SP-API
     sp_api_client: str = "mock"  # "mock" or "amazon"

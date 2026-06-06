@@ -8,6 +8,7 @@ const navItems = [
   { to: "/copy-factory", label: "nav.copy_factory", icon: "copy" },
   { to: "/publish", label: "nav.publish", icon: "publish" },
   { to: "/market-research", label: "nav.market_research", icon: "research" },
+  { to: "/marketing", label: "nav.marketing", icon: "marketing" },
 ];
 
 function NavIcon({ icon, className }: { icon: string; className?: string }) {
@@ -43,6 +44,12 @@ function NavIcon({ icon, className }: { icon: string; className?: string }) {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
         </svg>
       );
+    case "marketing":
+      return (
+        <svg className={cls} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+        </svg>
+      );
     default:
       return null;
   }
@@ -53,7 +60,7 @@ export function Layout() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
 
-  const userEmail = localStorage.getItem("user_email") || "User";
+  const userPhone = localStorage.getItem("user_phone") || "User";
 
   const handleLogout = () => {
     localStorage.removeItem("access_token");
@@ -120,17 +127,17 @@ export function Layout() {
             {/* User avatar & email */}
             <div className="hidden sm:flex items-center gap-2 text-sm text-content/70">
               <div className="w-8 h-8 rounded-full bg-primary text-primary-fg flex items-center justify-center text-xs font-bold">
-                {userEmail.charAt(0).toUpperCase()}
+                {userPhone.charAt(0)}
               </div>
-              <span className="max-w-[140px] truncate">{userEmail}</span>
+              <span className="max-w-[140px] truncate">{userPhone}</span>
             </div>
 
             {/* Language toggle */}
             <button
               className="px-3 py-1.5 text-sm font-medium rounded-lg border border-edge hover:bg-primary-light transition-colors"
-              onClick={() => i18n.changeLanguage(i18n.language === "zh" ? "en" : "zh")}
+              onClick={() => i18n.changeLanguage(i18n.language?.startsWith("zh") ? "en" : "zh")}
             >
-              {i18n.language === "zh" ? "EN" : "中文"}
+              {i18n.language?.startsWith("zh") ? "EN" : "中文"}
             </button>
 
             {/* Logout */}

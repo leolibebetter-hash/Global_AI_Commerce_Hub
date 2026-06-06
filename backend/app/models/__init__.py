@@ -5,5 +5,10 @@ from app.models.user_ai_usage import UserAIUsage
 from app.models.recharge_order import RechargeOrder
 from app.models.amazon_account import AmazonAccount
 from app.models.publish_record import PublishRecord
+from app.models.marketing_campaign import MarketingCampaign
+from app.models.marketing_content import MarketingContent
 
-__all__ = ["User", "UserSession", "UserAIBalance", "UserAIUsage", "RechargeOrder", "AmazonAccount", "PublishRecord"]
+__all__ = [
+    "User", "UserSession", "UserAIBalance", "UserAIUsage", "RechargeOrder",
+    "AmazonAccount", "PublishRecord", "MarketingCampaign", "MarketingContent",
+]

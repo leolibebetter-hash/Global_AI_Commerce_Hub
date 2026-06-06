@@ -10,6 +10,7 @@
     "copy_factory": "文案工厂",
     "publish": "一键发布",
     "market_research": "市场研究",
+    "marketing": "营销中心",
     "settings": "设置"
   },
   "copy_factory": {
@@ -143,6 +144,100 @@
     "confirm_dialog": {
       "title": "确认发布",
       "message": "确认要将此商品发布到亚马逊吗？"
+    }
+  },
+  "marketing": {
+    "title": "营销中心",
+    "subtitle": "AI 驱动的跨境营销策划与内容创作",
+    "tabs": {
+      "campaign": "营销策划",
+      "content": "内容创作",
+      "audience": "受众分析"
+    },
+    "campaign": {
+      "title": "AI 营销策划",
+      "product_name": "产品名称",
+      "category": "产品品类",
+      "features": "产品特性",
+      "features_hint": "输入特性后按 Enter 添加",
+      "market": "目标市场",
+      "language": "语言",
+      "objective": "营销目标",
+      "generate": "生成营销策划",
+      "result": "策划结果",
+      "theme": "活动主题",
+      "description": "活动描述",
+      "strategy": "内容策略",
+      "channels": "渠道建议",
+      "hashtags": "推荐标签",
+      "budget": "预算等级",
+      "placeholder": "填写产品信息后点击「生成营销策划」",
+      "list_title": "我的营销活动",
+      "no_campaigns": "暂无营销活动",
+      "contents": "条内容"
+    },
+    "content": {
+      "title": "AI 内容创作",
+      "types": {
+        "script": "短视频脚本",
+        "post": "社媒帖子",
+        "ad": "广告文案"
+      },
+      "product_name": "产品名称",
+      "features": "产品特性",
+      "features_hint": "输入特性后按 Enter 添加",
+      "platform": "目标平台",
+      "language": "语言",
+      "tone": "风格语气",
+      "duration": "视频时长(秒)",
+      "audience": "目标受众",
+      "key_message": "核心信息",
+      "market": "目标市场",
+      "objective": "广告目标",
+      "generate": "生成内容",
+      "result": "生成结果",
+      "script_title": "视频标题",
+      "hook": "开场吸引",
+      "scenes": "分镜头",
+      "visual": "画面",
+      "narration": "台词",
+      "overlay": "字幕",
+      "music": "配乐建议",
+      "caption": "帖子文案",
+      "hashtags": "话题标签",
+      "image_hint": "配图建议",
+      "best_time": "最佳发布时间",
+      "engagement_tips": "互动提示",
+      "headlines": "广告标题",
+      "descriptions": "广告描述",
+      "keywords": "关键词",
+      "placeholder": "选择内容类型并填写产品信息",
+      "recent": "最近生成的内容",
+      "no_content": "暂无生成内容"
+    },
+    "audience": {
+      "title": "受众画像分析",
+      "category": "产品品类",
+      "market": "目标市场",
+      "interests": "兴趣关键词",
+      "interests_hint": "输入关键词后按 Enter 添加",
+      "language": "输出语言",
+      "analyze": "分析受众",
+      "result": "分析结果",
+      "demographics": "人口统计",
+      "interests": "兴趣与行为",
+      "content_prefs": "内容偏好",
+      "platform_usage": "平台使用",
+      "primary": "主要平台",
+      "secondary": "次要平台",
+      "pain_points": "痛点",
+      "motivations": "购买动机",
+      "placeholder": "输入产品品类和目标市场开始分析"
+    },
+    "actions": {
+      "copy": "复制内容",
+      "copy_caption": "复制文案",
+      "refresh": "刷新列表"
     }
   }
 }
