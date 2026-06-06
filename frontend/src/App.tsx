@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Layout } from "./components/Layout";
+import { Landing } from "./pages/Landing";
 import { Dashboard } from "./pages/Dashboard";
 import { ImageFactory } from "./pages/ImageFactory";
 import { CopyFactory } from "./pages/CopyFactory";
@@ -20,8 +21,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Landing />} />
         <Route path="/login" element={<LoginPage />} />
         <Route
+          path="/app"
           element={
             <ProtectedRoute>
               <Layout />
