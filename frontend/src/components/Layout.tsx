@@ -3,14 +3,14 @@ import { Outlet, NavLink, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const navItems = [
-  { to: "/", label: "nav.dashboard", icon: "dashboard" },
-  { to: "/image-factory", label: "nav.image_factory", icon: "image" },
-  { to: "/copy-factory", label: "nav.copy_factory", icon: "copy" },
-  { to: "/publish", label: "nav.publish", icon: "publish" },
-  { to: "/market-research", label: "nav.market_research", icon: "research" },
-  { to: "/marketing", label: "nav.marketing", icon: "marketing" },
-  { to: "/product-planner", label: "nav.product_planner", icon: "planner" },
-  { to: "/settings", label: "nav.settings", icon: "settings" },
+  { to: "/app", label: "nav.dashboard", icon: "dashboard" },
+  { to: "/app/image-factory", label: "nav.image_factory", icon: "image" },
+  { to: "/app/copy-factory", label: "nav.copy_factory", icon: "copy" },
+  { to: "/app/publish", label: "nav.publish", icon: "publish" },
+  { to: "/app/market-research", label: "nav.market_research", icon: "research" },
+  { to: "/app/marketing", label: "nav.marketing", icon: "marketing" },
+  { to: "/app/product-planner", label: "nav.product_planner", icon: "planner" },
+  { to: "/app/settings", label: "nav.settings", icon: "settings" },
 ];
 
 function NavIcon({ icon, className }: { icon: string; className?: string }) {

@@ -104,7 +104,7 @@ export function LoginPage() {
           }
         }
         localStorage.setItem("user_phone", phone);
-        navigate("/", { replace: true });
+        navigate("/app", { replace: true });
       } catch (err) {
         setError(err instanceof Error ? err.message : "Authentication failed");
       } finally {
