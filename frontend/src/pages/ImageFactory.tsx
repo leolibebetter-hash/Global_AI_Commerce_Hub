@@ -369,7 +369,7 @@ export function ImageFactory() {
   const handleUseInListing = useCallback(() => {
     if (!result) return;
     const imageUrls = result.scene_urls.join(",");
-    navigate("/publish", { state: { prefillImages: imageUrls } });
+    navigate("/app/publish", { state: { prefillImages: imageUrls } });
   }, [result, navigate]);
 
   // --- Error retry ---

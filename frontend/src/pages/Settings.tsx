@@ -23,13 +23,13 @@ export function Settings() {
   }, []);
 
   const moduleLinks = [
-    { name: "Dashboard", path: "/" },
-    { name: "Market Research", path: "/market-research" },
-    { name: "Product Planner", path: "/product-planner" },
-    { name: "Copy Factory", path: "/copy-factory" },
-    { name: "Image Factory", path: "/image-factory" },
-    { name: "Marketing Hub", path: "/marketing" },
-    { name: "Multi-Platform Publish", path: "/publish" },
+    { name: "Dashboard", path: "/app" },
+    { name: "Market Research", path: "/app/market-research" },
+    { name: "Product Planner", path: "/app/product-planner" },
+    { name: "Copy Factory", path: "/app/copy-factory" },
+    { name: "Image Factory", path: "/app/image-factory" },
+    { name: "Marketing Hub", path: "/app/marketing" },
+    { name: "Multi-Platform Publish", path: "/app/publish" },
   ];
 
   return (

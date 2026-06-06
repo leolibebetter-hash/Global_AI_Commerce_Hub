@@ -319,7 +319,7 @@ export function MarketResearch() {
                 </div>
               )}
               {keywordList && (
-                <Button variant="secondary" size="sm" onClick={() => window.location.href = `/copy-factory?keywords=${encodeURIComponent(keywordList)}`}>
+                <Button variant="secondary" size="sm" onClick={() => window.location.href = `/app/copy-factory?keywords=${encodeURIComponent(keywordList)}`}>
                   {t("market_research.keywords.use_in_copy_factory")}
                 </Button>
               )}

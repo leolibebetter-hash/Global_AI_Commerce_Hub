@@ -43,11 +43,11 @@ export function Dashboard() {
   }, []);
 
   const quickActions = [
-    { label: t("nav.market_research"), desc: "Analyze trends, keywords & competitors", to: "/market-research", color: "bg-blue-500" },
-    { label: t("nav.copy_factory"), desc: "AI copywriting for product listings", to: "/copy-factory", color: "bg-green-500" },
-    { label: t("nav.image_factory"), desc: "AI-powered product image generation", to: "/image-factory", color: "bg-purple-500" },
-    { label: t("nav.marketing"), desc: "Campaign planning & content creation", to: "/marketing", color: "bg-orange-500" },
-    { label: t("nav.publish"), desc: "One-click multi-platform publishing", to: "/publish", color: "bg-red-500" },
+    { label: t("nav.market_research"), desc: "Analyze trends, keywords & competitors", to: "/app/market-research", color: "bg-blue-500" },
+    { label: t("nav.copy_factory"), desc: "AI copywriting for product listings", to: "/app/copy-factory", color: "bg-green-500" },
+    { label: t("nav.image_factory"), desc: "AI-powered product image generation", to: "/app/image-factory", color: "bg-purple-500" },
+    { label: t("nav.marketing"), desc: "Campaign planning & content creation", to: "/app/marketing", color: "bg-orange-500" },
+    { label: t("nav.publish"), desc: "One-click multi-platform publishing", to: "/app/publish", color: "bg-red-500" },
   ];
 
   const platforms = data?.stats.publish_by_platform || {};
@@ -167,7 +167,7 @@ export function Dashboard() {
               Market Research → Copy Factory → Image Factory → Marketing Hub → Publish
             </p>
           </div>
-          <Button variant="primary" onClick={() => navigate("/market-research")}>
+          <Button variant="primary" onClick={() => navigate("/app/market-research")}>
             Start Research
           </Button>
         </div>
