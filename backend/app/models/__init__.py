@@ -7,8 +7,10 @@ from app.models.amazon_account import AmazonAccount
 from app.models.publish_record import PublishRecord
 from app.models.marketing_campaign import MarketingCampaign
 from app.models.marketing_content import MarketingContent
+from app.models.market_research import MarketResearchResult
 
 __all__ = [
     "User", "UserSession", "UserAIBalance", "UserAIUsage", "RechargeOrder",
     "AmazonAccount", "PublishRecord", "MarketingCampaign", "MarketingContent",
+    "MarketResearchResult",
 ]
