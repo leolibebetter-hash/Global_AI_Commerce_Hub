@@ -1,15 +1,7 @@
 from datetime import datetime
 from pydantic import BaseModel, Field
 
-
-# ── Enums ──────────────────────────────────────────────
-
-CONTENT_TYPES = ["campaign_plan", "video_script", "social_post", "ad_copy", "audience_profile"]
-PLATFORMS = ["tiktok", "youtube_shorts", "instagram_reels", "instagram", "facebook", "twitter", "pinterest", "google_ads", "bing_ads"]
-OBJECTIVES = ["brand_awareness", "conversion", "engagement", "traffic"]
-STATUSES = ["draft", "active", "completed"]
-MARKETS = ["US", "UK", "DE", "JP"]
-LANGUAGES = ["en", "zh", "de", "ja"]
+"""Pydantic schemas for marketing campaign planning, content generation, and audience analysis."""
 
 
 # ── AI Generation Requests ─────────────────────────────
@@ -162,21 +154,8 @@ class CampaignResponse(BaseModel):
         from_attributes = True
 
 
-class CampaignDetailResponse(BaseModel):
-    id: str
-    name: str
-    description: str | None
-    target_market: str
-    target_audience: str | None
-    objective: str
-    status: str
-    created_at: datetime
-    updated_at: datetime
-    content_count: int = 0
+class CampaignDetailResponse(CampaignResponse):
     contents: list["ContentResponse"] = []
-
-    class Config:
-        from_attributes = True
 
 
 # ── Content CRUD Schemas ───────────────────────────────
